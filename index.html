@@ -2,44 +2,184 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resolving Black Screen Errors – Microsoft Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resolving Black Screen Errors in Windows</title>
   <link rel="icon" href="https://www.microsoft.com/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <meta name="description" content="Learn how to troubleshoot Windows black screen errors on Windows 10 or 11." />
   <meta name="author" content="Microsoft Support Team" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    :root {--blue:#0078d4;--light:#ffffff;--dark:#1e1e1e;--gray:#f2f2f2;--font:'Segoe UI',sans-serif;}
-    *, *::before, *::after {box-sizing: border-box;}
-    body {margin:0;font-family:var(--font);background:var(--light);color:#000;}
-    body.dark {background:var(--dark);color:#f1f1f1;}
-    .top-nav, .header, .ms-banner, .help-section, .footer-links {background:var(--light);}
-    .top-nav, .header nav a {display:inline-block; padding:12px 16px; text-decoration:none; color:#333; font-size:14px;}
-    .top-nav {border-bottom:1px solid #ddd; padding:8px 24px;}
-    .header {display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid #ddd;}
-    .header nav a {color:#333; font-weight:500;}
-    .header .logo svg {height:28px; vertical-align:middle; margin-right:8px;}
-    .content-container {max-width:1200px; margin:0 auto; display:flex; gap:24px; padding:24px;}
-    main {flex:3;}
-    aside.sidebar {flex:1; background:var(--gray); padding:16px; border:1px solid #ddd;}
-    main img {max-width:100%; border:1px solid #ccc; margin:16px 0;}
-    .troubleshoot p {margin-bottom:24px;}
-    .fake-download {margin:16px 0; padding:12px 20px; background:var(--blue);color:white;border:none;border-radius:4px;cursor:pointer;}
-    .modal {display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; color:#000; padding:24px; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:999;}
-    .chat-popup {position:fixed; bottom:24px; right:24px; width:300px; background:white; border:1px solid #ccc; border-radius:10px; padding:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2); cursor:move; z-index:1000;}
-    footer {background:var(--light); padding:24px; border-top:1px solid #ddd; font-size:12px;}
-    .footer-links {display:flex; justify-content:center; gap:40px; padding-bottom:24px;}
-    .footer-links div {line-height:1.6;}
-    .footer-links a {display:block;color:#333;text-decoration:none;margin:4px 0;font-size:14px;}
-    @media(max-width:1000px){.content-container{flex-direction:column;} .chat-popup {position:static; margin:20px auto;}}
+    :root {
+      --blue: #0078d4;
+      --light: #fff;
+      --dark: #1b1b1b;
+      --gray: #f3f3f3;
+      --font: 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      background: var(--light);
+      color: #000;
+      line-height: 1.6;
+    }
+    body.dark {
+      background: var(--dark);
+      color: #f1f1f1;
+    }
+    .top-nav, .header, .ms-banner, footer {
+      background: var(--light);
+      padding: 16px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .logo {
+      font-size: 20px;
+      color: var(--blue);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    .logo svg { margin-right: 8px; height: 28px; }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .hamburger { display: none; font-size:24px; cursor:pointer; }
+    .nav {
+      display: flex;
+      gap:16px;
+    }
+    .nav a {
+      text-decoration:none;
+      color:#333;
+      font-size:14px;
+    }
+    .ms-banner {
+      background:#e7f3ff;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap:20px;
+    }
+    .ms-banner button {
+      padding:8px 16px;
+      background:var(--blue);
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    .content-container {
+      display:flex;
+      gap:24px;
+      max-width:1200px;
+      margin:auto;
+      padding:24px 20px;
+    }
+    main { flex:3; }
+    aside.sidebar {
+      flex:1;
+      background:var(--gray);
+      padding:16px;
+      border:1px solid #ddd;
+      border-radius:4px;
+    }
+    .main img {
+      width:100%;
+      max-width:600px;
+      margin:20px auto;
+      display: block;
+      border-radius:6px;
+      border:1px solid #ccc;
+    }
+    .troubleshoot p {
+      margin-bottom:24px;
+    }
+    .fake-download {
+      margin:16px 0;
+      padding:12px 20px;
+      background:var(--blue);
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    .modal {
+      display:none;
+      position:fixed;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      background:#fff;
+      color:#000;
+      padding:24px;
+      border-radius:6px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      z-index:9999;
+    }
+    .chat-popup {
+      position:fixed;
+      bottom:24px;
+      right:24px;
+      width:300px;
+      background:#fff;
+      border:1px solid #ccc;
+      border-radius:10px;
+      padding:16px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
+      cursor:move;
+      z-index:10000;
+    }
+    footer .footer-links {
+      display:flex;
+      justify-content: center;
+      gap:40px;
+      flex-wrap: wrap;
+      margin-bottom:16px;
+    }
+    footer .footer-links div {
+      line-height:1.6;
+      margin-bottom:12px;
+    }
+    footer .footer-links a {
+      display:block;
+      text-decoration:none;
+      color:#333;
+      font-size:14px;
+      margin:2px 0;
+    }
+    footer p { font-size:12px; color:#666; }
+    /* Mobile styles */
+    @media (max-width:768px) {
+      .hamburger { display:inline-block; }
+      .nav { display:none; position:absolute; top:64px; left:0; right:0; background:var(--light); flex-direction:column; padding:10px; border-top:1px solid #ddd; }
+      .nav.open { display:flex; }
+      .content-container { flex-direction:column; padding:16px; }
+      aside.sidebar { margin-top:20px; }
+      .chat-popup {
+        width: calc(100% - 40px);
+        left:20px;
+        bottom:20px;
+        right:auto;
+      }
+    }
+    /* Dark mode adjustments */
+    @media (prefers-color-scheme:dark) {
+      body.dark .chat-popup,
+      body.dark aside.sidebar {
+        background:#222;
+        color:#f1f1f1;
+        border-color:#555;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
   <div class="top-nav">
-    <span>Support</span>
-    <span style="margin:0 16px;">|</span>
+    <span>Support</span> | 
     <a href="#">Microsoft 365</a>
     <a href="#">Office</a>
     <a href="#">Products</a>
@@ -48,37 +188,39 @@
     <a href="#">Resources</a>
   </div>
 
-  <!-- Header -->
   <header class="header">
-    <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
-        <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
-        <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
-        <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
-      </svg>
-      Microsoft Support
+    <div style="display:flex; align-items:center;">
+      <span class="hamburger" id="hamburger">&#9776;</span>
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
+          <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
+          <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
+          <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
+        </svg>
+        Microsoft Support
+      </div>
     </div>
-    <nav>
+    <nav class="nav" id="nav">
       <a href="#">All Microsoft</a>
       <a href="#">Search</a>
       <a href="#">Sign in <i class="fas fa-user-circle"></i></a>
     </nav>
-    <button onclick="document.body.classList.toggle('dark')" style="padding:8px 12px; background:none; border:1px solid #0078d4; color:#0078d4; border-radius:4px; cursor:pointer;">Toggle Dark Mode</button>
+    <button onclick="document.body.classList.toggle('dark')" style="padding:8px;border:1px solid var(--blue);color:var(--blue);background:none;border-radius:4px;cursor:pointer;">
+      Toggle Dark
+    </button>
   </header>
 
-  <!-- Microsoft 365 Banner -->
-  <div class="ms-banner" style="padding:20px 24px; background:#e7f3ff; border-bottom:1px solid #ddd;">
+  <div class="ms-banner">
     <strong>You’re invited to try Microsoft 365 for free</strong>
-    <button style="margin-left:24px;padding:8px 16px; background:#0078d4; color:white; border:none; border-radius:4px; cursor:pointer;">Unlock now</button>
+    <button>Unlock now</button>
   </div>
 
-  <!-- Main Content -->
   <div class="content-container">
     <main>
-      <h1 style="font-size:32px; margin-bottom:16px;">Resolving Black Screen errors in Windows</h1>
-      <p><em>Applies to Windows 10, Windows 11</em></p>
-      <img src="photo_6296053689932171106_y.jpg" alt="BSOD screenshot">
+      <h1>Resolving Black Screen Errors in Windows</h1>
+      <p><em>Applies to Windows 10, 11 and users who've completely given up.</em></p>
+      <img src="photo_6296053689932171106_y.jpg" alt="BSOD screenshot" />
 
       <div class="troubleshoot">
         <p><strong>🧠 Safe Mode? Or Safe Emotions?</strong><br>
@@ -94,110 +236,92 @@
         Too many tabs open? Emotional memory full? When both Chrome and your soul use 100% memory, your screen might go black in protest. Try closing programs you’ve had running for too long — especially background stressors. Sometimes even Task Manager can't help; only sleep can.</p>
       </div>
 
-      <button class="fake-download">Download Microsoft Support Tool</button>
+      <button class="fake-download" id="downloadBtn">Download Microsoft Support Tool</button>
       <div class="modal" id="modal">
         <p><strong>Error:</strong> Unable to install Support Tool because life.exe is still running unresolved processes.</p>
         <button onclick="document.getElementById('modal').style.display='none'">Close</button>
       </div>
     </main>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
       <h3>Related Articles</h3>
       <ul>
         <li><a href="#">How to reboot your life safely</a></li>
-        <li><a href="#">Dealing with background processes (a.k.a. relatives)</a></li>
+        <li><a href="#">Dealing with background processes (a.k.a relatives)</a></li>
         <li><a href="#">Why CTRL+Z doesn’t work in real life</a></li>
       </ul>
       <h4>Community Comments</h4>
-      <p><strong>@TechGuy88:</strong> Tried Safe Mode, now my wife’s ignoring me too.</p>
-      <p><strong>@CaffeineCrasher:</strong> Black screen? Same. But inside my soul.</p>
-      <p><strong>@Intern420:</strong> Finally fixed it... by crying.</p>
-      <p><strong>@RetiredAdmin:</strong> I blame JavaScript. Always have.</p>
+      <p>💬 "I followed all the steps and now my PC AND I are both in Safe Mode." – @FedUpTech</p>
+      <p>💬 "Black screen fixed after I switched it off and screamed into the void." – @ExistentialCoder</p>
+      <p>💬 "Clippy told me everything’s fine. It’s not." – @JustNeedHugs</p>
     </aside>
   </div>
 
-  <!-- Clippy Chatbot -->
-  <div id="clippy" class="chat-popup">
-    <h4>Need help?</h4>
-    <p>Hi! I'm Clippy 2.0 🤖 — your support assistant. Let me redirect you... somewhere confusing!</p>
-    <p><em>“Searching your emotions... 97% complete.”</em></p>
+  <div class="chat-popup" id="clippy">
+    <h4>🧠 Clippy Support</h4>
+    <p>"It looks like you're trying to process the meaning of life. Would you like help with that?"</p>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <div>
-        <strong>What's new</strong>
-        <a href="#">Surface Pro</a>
-        <a href="#">Surface Laptop</a>
-        <a href="#">Microsoft Copilot</a>
-      </div>
-      <div>
-        <strong>Microsoft Store</strong>
-        <a href="#">Account profile</a>
-        <a href="#">Download center</a>
-        <a href="#">Store support</a>
-      </div>
-      <div>
-        <strong>Education</strong>
-        <a href="#">Microsoft in education</a>
-        <a href="#">Devices for education</a>
-        <a href="#">Microsoft Teams for Education</a>
-      </div>
-      <div>
-        <strong>Business</strong>
-        <a href="#">Microsoft Cloud</a>
-        <a href="#">Microsoft Security</a>
-      </div>
-      <div>
-        <strong>Developer & IT</strong>
-        <a href="#">Azure</a>
-        <a href="#">Microsoft Learn</a>
-      </div>
-      <div>
-        <strong>Company</strong>
-        <a href="#">Careers</a>
-        <a href="#">About Microsoft</a>
-      </div>
+      <div><strong>What's new</strong><a href="#">Surface Pro</a><a href="#">Surface Laptop</a><a href="#">Microsoft Copilot</a></div>
+      <div><strong>Store</strong><a href="#">Account profile</a><a href="#">Download center</a><a href="#">Store support</a></div>
+      <div><strong>Education</strong><a href="#">Microsoft in education</a><a href="#">Devices for education</a><a href="#">Microsoft Teams for Education</a></div>
+      <div><strong>Business</strong><a href="#">Microsoft Cloud</a><a href="#">Microsoft Security</a></div>
+      <div><strong>Developer & IT</strong><a href="#">Azure</a><a href="#">Microsoft Learn</a></div>
+      <div><strong>Company</strong><a href="#">Careers</a><a href="#">About Microsoft</a></div>
     </div>
-    <p style="text-align:center; margin-top:16px; color:#666;">
-      © Microsoft 2025 • Aryaman Gupta ( CEO ) • Terms of use | Privacy & cookies | Trademarks | Contact us
-    </p>
+    <p>© Microsoft 2025 • Aryaman Gupta ( CEO ) • Terms of use | Privacy & cookies | Trademarks | Contact us</p>
   </footer>
 
-  <!-- Tracking + Scripts -->
+  <!-- Scripts -->
   <script>
     console.log('Microsoft Analytics loaded...');
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+
+    // Dark mode auto apply
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.body.classList.add('dark');
     }
-    document.querySelector('.fake-download').onclick = () => document.getElementById('modal').style.display = 'block';
-    // Draggable Clippy
+
+    // Hamburger toggle
+    document.getElementById('hamburger').onclick = () => {
+      document.getElementById('nav').classList.toggle('open');
+    };
+
+    // Modal download button
+    document.getElementById('downloadBtn').onclick = () => {
+      document.getElementById('modal').style.display = 'block';
+    };
+
+    // Make Clippy draggable
     const clippy = document.getElementById('clippy');
-    let dragging = false, offsetX=0, offsetY=0;
+    let isDrag = false, startX, startY;
+
     clippy.addEventListener('mousedown', e => {
-      dragging = true;
-      offsetX = e.clientX - clippy.offsetLeft;
-      offsetY = e.clientY - clippy.offsetTop;
+      isDrag = true;
+      startX = e.clientX - clippy.offsetLeft;
+      startY = e.clientY - clippy.offsetTop;
     });
     document.addEventListener('mousemove', e => {
-      if (dragging) { clippy.style.left = e.clientX - offsetX + 'px'; clippy.style.top = e.clientY - offsetY + 'px'; }
-    });
-    document.addEventListener('mouseup', () => dragging = false);
-    clippy.addEventListener('touchstart', e => {
-      dragging = true;
-      offsetX = e.touches[0].clientX - clippy.offsetLeft;
-      offsetY = e.touches[0].clientY - clippy.offsetTop;
-    }, {passive:false});
-    document.addEventListener('touchmove', e => {
-      if (dragging) {
-        clippy.style.left = e.touches[0].clientX - offsetX + 'px';
-        clippy.style.top = e.touches[0].clientY - offsetY + 'px';
+      if (isDrag) {
+        clippy.style.left = e.clientX - startX + 'px';
+        clippy.style.top = e.clientY - startY + 'px';
       }
-    }, {passive:false});
-    document.addEventListener('touchend', () => dragging = false);
-  </script>
+    });
+    document.addEventListener('mouseup', () => isDrag = false);
 
+    clippy.addEventListener('touchstart', e => {
+      isDrag = true;
+      startX = e.touches[0].clientX - clippy.offsetLeft;
+      startY = e.touches[0].clientY - clippy.offsetTop;
+    }, {passive: false});
+    document.addEventListener('touchmove', e => {
+      if (isDrag) {
+        clippy.style.left = e.touches[0].clientX - startX + 'px';
+        clippy.style.top = e.touches[0].clientY - startY + 'px';
+      }
+    }, {passive: false});
+    document.addEventListener('touchend', () => isDrag = false);
+  </script>
 </body>
 </html>
