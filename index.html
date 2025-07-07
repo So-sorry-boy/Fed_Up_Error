@@ -1,287 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resolving Black Screen Errors in Windows</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Support</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css">
   <style>
     :root {
       --blue: #0078d4;
-      --gray: #f3f3f3;
-      --font: 'Segoe UI', sans-serif;
+      --dark-bg: #0c1c8c;
+      --light-bg: #ffffff;
+      --dark-text: #ffffff;
+      --light-text: #1b1b1b;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      font-family: var(--font);
-      background-color: #fff;
-      color: #1b1b1b;
-      line-height: 1.6;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      transition: background 0.3s, color 0.3s;
     }
-    .top-bar, .full-header, .header-bar, .search-bar, .breadcrumbs, .ms365-banner, .footer-meta {
-      padding: 16px 32px;
+
+    body.dark {
+      background-color: #1a1a1a;
+      color: var(--dark-text);
     }
+
     .top-bar {
-      background-color: #f2f2f2;
-      font-size: 12px;
-      color: #505050;
+      background: #f2f2f2;
+      color: #333;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 14px;
     }
-    .full-header {
-      background-color: white;
-      border-bottom: 1px solid #e1e1e1;
+
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
       flex-wrap: wrap;
-      font-size: 14px;
     }
+
     .logo {
       display: flex;
       align-items: center;
+      gap: 10px;
+      font-weight: bold;
     }
+
     .logo svg {
+      width: 24px;
       height: 24px;
-      margin-right: 8px;
     }
-    .nav-menu {
+
+    .toggle-mode {
+      background: none;
+      border: 2px solid var(--blue);
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #f7f7f7;
+      padding: 10px 20px;
       display: flex;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
-    .nav-item {
-      position: relative;
-    }
-    .nav-item a {
+
+    nav a {
       text-decoration: none;
-      color: #1b1b1b;
-      position: relative;
-    }
-    .nav-item a::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: var(--blue);
-      transition: width 0.3s;
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-    }
-    .nav-item:hover a::after {
-      width: 100%;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      z-index: 999;
-      min-width: 160px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .nav-item:hover .dropdown {
-      display: block;
-    }
-    .dropdown a {
-      display: block;
-      padding: 8px 12px;
-      text-decoration: none;
-      color: #1b1b1b;
-      font-size: 14px;
-    }
-    .header-bar {
-      background-color: var(--blue);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .header-bar .lang-select {
-      background: white;
       color: var(--blue);
-      border: none;
-      padding: 6px 10px;
-      font-size: 14px;
-      border-radius: 4px;
+      font-weight: bold;
     }
-    .header-bar .user-icon {
-      background: white;
-      color: var(--blue);
-      border-radius: 50%;
-      padding: 6px 8px;
-      font-size: 16px;
-      margin-left: 16px;
-      border: 1px solid #fff;
-    }
+
     .search-bar {
-      background: #f5f5f5;
-      position: relative;
+      padding: 20px;
+      text-align: center;
     }
+
     .search-bar input {
-      width: 100%;
-      padding: 12px 40px 12px 16px;
+      width: 80%;
+      padding: 10px;
       font-size: 14px;
-      border-radius: 4px;
       border: 1px solid #ccc;
+      border-radius: 4px;
     }
-    .search-bar i {
-      position: absolute;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: gray;
-    }
+
     .breadcrumbs {
       font-size: 13px;
       color: #616161;
       background: #fafafa;
+      padding: 10px 20px;
     }
+
     .breadcrumbs span::after {
-      content: ' ›';
+      content: ' >';
       margin: 0 5px;
     }
-    .ms365-banner {
+
+    .ms-banner {
       background: linear-gradient(to right, #0078d4, #005a9e);
       color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
+      padding: 20px;
+      text-align: center;
     }
-    .ms365-banner button {
+
+    .ms-banner button {
       background: white;
       color: #0078d4;
       padding: 8px 16px;
-      font-size: 14px;
       border: none;
       border-radius: 4px;
+      font-weight: bold;
+      margin-top: 10px;
       cursor: pointer;
     }
-    .content {
-      padding: 32px;
-      max-width: 900px;
+
+    .main {
+      max-width: 800px;
       margin: auto;
+      padding: 40px 20px;
+      line-height: 1.8;
     }
-    .content img {
+
+    .main h1 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--blue);
+    }
+
+    .main img {
       max-width: 100%;
+      border: 2px solid #ccc;
+      margin: 30px auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    details {
+      margin-top: 20px;
       border: 1px solid #ccc;
+      padding: 10px;
       border-radius: 4px;
-      margin: 20px 0;
-    }
-    h1 { font-size: 28px; margin-bottom: 12px; }
-    h2 { font-size: 20px; margin-top: 24px; }
-    h3 { font-size: 16px; margin-top: 16px; }
-    .footer-meta {
       background: #f9f9f9;
-      font-size: 12px;
-      color: #666;
-      border-top: 1px solid #ddd;
+    }
+
+    .feedback-bar {
+      margin-top: 30px;
       text-align: center;
     }
-    .feedback-bar {
-      background: #eee;
-      padding: 20px 32px;
+
+    .feedback-bar button {
+      margin: 0 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background: var(--blue);
+      color: white;
+      cursor: pointer;
+    }
+
+    .qr-section {
+      background: var(--dark-bg);
+      color: white;
       text-align: center;
+      padding: 40px 20px;
       margin-top: 40px;
+    }
+
+    .qr-section img {
+      width: 160px;
+      height: 160px;
+      border: 4px solid white;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      padding: 20px;
+      background: #f0f0f0;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="top-bar">Microsoft Support | Contact | Help | All Microsoft</div>
-  <div class="full-header">
+  <div class="top-bar">
+    Microsoft Support
+  </div>
+
+  <div class="header">
     <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="1" y="1" width="10" height="10" fill="#f25022"/><rect x="13" y="1" width="10" height="10" fill="#7fba00"/><rect x="1" y="13" width="10" height="10" fill="#00a4ef"/><rect x="13" y="13" width="10" height="10" fill="#ffb900"/></svg>
-      <strong>Microsoft</strong>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="1" y="1" width="10" height="10" fill="#f25022"/><rect x="13" y="1" width="10" height="10" fill="#7fba00"/><rect x="1" y="13" width="10" height="10" fill="#00a4ef"/><rect x="13" y="13" width="10" height="10" fill="#ffb900"/></svg>
+      Microsoft Help
     </div>
-    <div class="nav-menu">
-      <div class="nav-item"><a href="#">Microsoft 365</a>
-        <div class="dropdown">
-          <a href="#">Word</a>
-          <a href="#">Excel</a>
-          <a href="#">PowerPoint</a>
-        </div>
-      </div>
-      <div class="nav-item"><a href="#">Windows</a>
-        <div class="dropdown">
-          <a href="#">Windows 11</a>
-          <a href="#">Windows 10</a>
-        </div>
-      </div>
-      <div class="nav-item"><a href="#">Devices</a>
-        <div class="dropdown">
-          <a href="#">Surface</a>
-          <a href="#">Xbox</a>
-        </div>
-      </div>
-    </div>
-    <div>
-      <i class="fas fa-user user-icon"></i>
-    </div>
+    <button class="toggle-mode" onclick="document.body.classList.toggle('dark')">Toggle Dark/Light Mode</button>
   </div>
-  <div class="header-bar">
-    <div><strong>Microsoft</strong></div>
-    <div>
-      <select class="lang-select">
-        <option selected>English (US)</option>
-        <option>Hindi (IN)</option>
-        <option>Deutsch (DE)</option>
-      </select>
-    </div>
-  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Windows</a>
+    <a href="#">Support</a>
+    <a href="#">Devices</a>
+  </nav>
+
   <div class="search-bar">
-    <input type="text" placeholder="Search Microsoft Support">
-    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search Microsoft Support...">
   </div>
-  <div class="breadcrumbs"><span>Home</span><span>Windows</span><span>Errors</span><span>Black Screen Error</span></div>
-  <div class="ms365-banner">
-    <div><strong>Try Microsoft 365 for free</strong><br>Unlock the full potential of productivity.</div>
+
+  <div class="breadcrumbs">
+    <span>Home</span><span>Windows</span><span>Black Screen Error</span>
+  </div>
+
+  <div class="ms-banner">
+    <h2>Try Microsoft 365</h2>
+    <p>Get premium Office apps, extra cloud storage, advanced security, and more — all in one convenient subscription.</p>
     <button>Start Free Trial</button>
   </div>
 
-  <div class="content">
-    <h1>Resolving Black Screen Errors in Windows</h1>
-    <p><strong>Applies to:</strong> Windows 11, Windows 10</p>
-    <p>Black Screen errors can happen when your system decides it’s had enough. These events occur when Windows shuts down unexpectedly due to serious emotional or existential faults—often triggered by intense overload of real-life responsibilities, existential dread, or lack of purpose.</p>
-    
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Windows_Black_Screen_Error.jpg" alt="Black screen error">
-
-    <h2>Basic Troubleshooting Steps</h2>
-    <h3>🌪️ Remove emotional baggage</h3>
-    <p>If you've recently picked up more weight (mental, physical, or societal), consider offloading before restarting.</p>
-
-    <h3>🛡️ Safe Mode Entry</h3>
-    <p>Sometimes you need to reboot into Safe Mode—just pause everything. Turn off notifications, close all tabs in your head, and just breathe.</p>
-
-    <h3>📦 Check internal storage</h3>
-    <p>Make sure you have at least 10% capacity left for joy, laughter, and unexpected memories.</p>
-
-    <h3>💽 Install updates</h3>
-    <p>Install tiny moments of self-care regularly—talks with friends, walks in nature, mindful scrolling, or even just drinking water.</p>
-
-    <h2>Advanced Steps</h2>
-    <h3>🧠 Run Memory Diagnostic</h3>
-    <p>Sometimes the memory gets corrupted—run diagnostics by journaling, meditating, or confronting your thoughts gently.</p>
-
-    <h3>🔍 Analyze crash dumps</h3>
-    <p>If everything still crashes, revisit your past experiences for patterns. Find the module that keeps failing.</p>
+  <div class="main">
+    <h1>Why Is My Screen Black?</h1>
+    <p>Black screen issues may occur during startup or while using the system, caused by hardware, software conflicts, outdated drivers, or system instability. Follow the guidance below to troubleshoot and resolve the issue.</p>
+    <img src="https://i.imgur.com/SS1WDCt.png" alt="Black Screen Error Image" />
+    <p>Step 1: Ensure all cables are securely connected. If using a desktop, verify monitor power and input source.</p>
+    <p>Step 2: Force restart the system by holding the power button for 10 seconds. Reboot and observe behavior.</p>
+    <p>Step 3: If you can boot into Safe Mode, uninstall recently installed apps or drivers that may be causing conflicts.</p>
+    <details>
+      <summary><strong>Advanced Troubleshooting (Click to Expand)</strong></summary>
+      <ul>
+        <li>Run built-in diagnostics or memory tests.</li>
+        <li>Check for corrupted system files using <code>sfc /scannow</code> in Command Prompt.</li>
+        <li>Update or roll back display drivers via Device Manager.</li>
+      </ul>
+    </details>
+    <div class="feedback-bar">
+      <p>Was this page helpful?</p>
+      <button>Yes</button>
+      <button>No</button>
+    </div>
   </div>
 
-  <div class="feedback-bar">
-    <p>Was this page helpful?</p>
-    <button>Yes</button>
-    <button>No</button>
+  <div class="qr-section">
+    <h2>Scan for More Information</h2>
+    <p>Scan the code below to access the support article directly on your mobile device.</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://support.microsoft.com/black-screen-error" alt="QR Code" />
+    <p>Article ID: 000001234</p>
   </div>
 
-  <div class="footer-meta">
-    Last updated: July 2025 · Article ID: KB420-FEDUP-EVERYTHING
-  </div>
+  <footer>
+    © Microsoft 2025 • Terms • Privacy • Accessibility
+  </footer>
+
+  <script>
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+    }
+  </script>
 </body>
 </html>
