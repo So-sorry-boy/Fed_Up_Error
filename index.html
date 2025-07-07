@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Microsoft Support</title>
+  <title>Microsoft Support - Black Screen Error</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -13,25 +13,21 @@
       --dark-text: #ffffff;
       --light-text: #1b1b1b;
     }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--light-bg);
       color: var(--light-text);
       transition: background 0.3s, color 0.3s;
     }
-
     body.dark {
       background-color: #1a1a1a;
       color: var(--dark-text);
     }
-
     .top-bar {
       background: #f2f2f2;
       color: #333;
@@ -39,7 +35,6 @@
       text-align: center;
       font-size: 14px;
     }
-
     .header {
       display: flex;
       justify-content: space-between;
@@ -48,19 +43,16 @@
       border-bottom: 1px solid #ddd;
       flex-wrap: wrap;
     }
-
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: bold;
     }
-
     .logo svg {
       width: 24px;
       height: 24px;
     }
-
     .toggle-mode {
       background: none;
       border: 2px solid var(--blue);
@@ -70,7 +62,6 @@
       color: var(--blue);
       font-weight: bold;
     }
-
     nav {
       background-color: #f7f7f7;
       padding: 10px 20px;
@@ -78,18 +69,15 @@
       gap: 20px;
       flex-wrap: wrap;
     }
-
     nav a {
       text-decoration: none;
       color: var(--blue);
       font-weight: bold;
     }
-
     .search-bar {
       padding: 20px;
       text-align: center;
     }
-
     .search-bar input {
       width: 80%;
       padding: 10px;
@@ -97,26 +85,22 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-
     .breadcrumbs {
       font-size: 13px;
       color: #616161;
       background: #fafafa;
       padding: 10px 20px;
     }
-
     .breadcrumbs span::after {
       content: ' >';
       margin: 0 5px;
     }
-
     .ms-banner {
       background: linear-gradient(to right, #0078d4, #005a9e);
       color: white;
       padding: 20px;
       text-align: center;
     }
-
     .ms-banner button {
       background: white;
       color: #0078d4;
@@ -127,67 +111,110 @@
       margin-top: 10px;
       cursor: pointer;
     }
-
     .main {
-      max-width: 800px;
+      display: flex;
+      max-width: 1200px;
       margin: auto;
       padding: 40px 20px;
       line-height: 1.8;
+      gap: 40px;
     }
-
-    .main h1 {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      text-align: center;
-      color: var(--blue);
+    .main-content {
+      flex: 3;
     }
-
-    .main img {
+    .sidebar {
+      flex: 1;
+      font-size: 14px;
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 6px;
+    }
+    .sidebar h3 {
+      margin-bottom: 10px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+    .main-content img {
       max-width: 100%;
       border: 2px solid #ccc;
       margin: 30px auto;
       display: block;
       border-radius: 6px;
     }
-
-    details {
-      margin-top: 20px;
-      border: 1px solid #ccc;
-      padding: 10px;
+    .fake-button {
+      background-color: #0078d4;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 14px;
       border-radius: 4px;
-      background: #f9f9f9;
+      cursor: pointer;
+      margin: 20px 0;
     }
-
-    .feedback-bar {
-      margin-top: 30px;
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      z-index: 999;
+      width: 300px;
       text-align: center;
+      border-radius: 6px;
     }
-
-    .feedback-bar button {
-      margin: 0 10px;
+    #popup h4 { margin-bottom: 12px; }
+    #popup button {
+      background: #0078d4;
+      color: white;
       padding: 8px 16px;
       border: none;
       border-radius: 4px;
-      background: var(--blue);
-      color: white;
       cursor: pointer;
     }
-
-    .qr-section {
-      background: var(--dark-bg);
+    .chat-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0078d4;
       color: white;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 40px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 999;
     }
-
-    .qr-section img {
-      width: 160px;
-      height: 160px;
-      border: 4px solid white;
-      margin-top: 20px;
+    .chat-box {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 300px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      padding: 20px;
+      z-index: 999;
     }
-
+    .chat-box h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .chat-box p {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
     footer {
       text-align: center;
       font-size: 12px;
@@ -195,20 +222,10 @@
       background: #f0f0f0;
       color: #666;
     }
-
-    @media (max-width: 600px) {
-      .header {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="top-bar">
-    Microsoft Support
-  </div>
-
+  <div class="top-bar">Microsoft Support</div>
   <div class="header">
     <div class="logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="1" y="1" width="10" height="10" fill="#f25022"/><rect x="13" y="1" width="10" height="10" fill="#7fba00"/><rect x="1" y="13" width="10" height="10" fill="#00a4ef"/><rect x="13" y="13" width="10" height="10" fill="#ffb900"/></svg>
@@ -216,61 +233,63 @@
     </div>
     <button class="toggle-mode" onclick="document.body.classList.toggle('dark')">Toggle Dark/Light Mode</button>
   </div>
-
   <nav>
     <a href="#">Home</a>
     <a href="#">Windows</a>
     <a href="#">Support</a>
     <a href="#">Devices</a>
   </nav>
-
   <div class="search-bar">
     <input type="text" placeholder="Search Microsoft Support...">
   </div>
-
   <div class="breadcrumbs">
     <span>Home</span><span>Windows</span><span>Black Screen Error</span>
   </div>
-
   <div class="ms-banner">
     <h2>Try Microsoft 365</h2>
     <p>Get premium Office apps, extra cloud storage, advanced security, and more — all in one convenient subscription.</p>
     <button>Start Free Trial</button>
   </div>
-
   <div class="main">
-    <h1>Why Is My Screen Black?</h1>
-    <p>Black screen issues may occur during startup or while using the system, caused by hardware, software conflicts, outdated drivers, or system instability. Follow the guidance below to troubleshoot and resolve the issue.</p>
-    <img src="https://i.imgur.com/SS1WDCt.png" alt="Black Screen Error Image" />
-    <p>Step 1: Ensure all cables are securely connected. If using a desktop, verify monitor power and input source.</p>
-    <p>Step 2: Force restart the system by holding the power button for 10 seconds. Reboot and observe behavior.</p>
-    <p>Step 3: If you can boot into Safe Mode, uninstall recently installed apps or drivers that may be causing conflicts.</p>
-    <details>
-      <summary><strong>Advanced Troubleshooting (Click to Expand)</strong></summary>
+    <div class="main-content">
+      <h1>Why Is My Screen Black?</h1>
+      <p>Your computer may have run into a critical issue that prevents visuals from rendering on-screen. This issue, though often fixable, may be a sign that Windows, or possibly your monitor, has decided to ghost you. Don't worry — we’re here to help before it leaves you on “read” permanently.</p>
+      <img src="photo_6296053689932171106_y.jpg" alt="Fake BSOD Error Image" />
+      <p><strong>Step 1: Check Display Connections</strong><br>Ensure all monitor cables are securely connected to both the display and the PC. Sometimes even a slightly loose HDMI or DisplayPort cable can disrupt output, resulting in a black screen that looks like your PC just gave up. Try unplugging and replugging the cables. If possible, use a different cable or monitor to rule out hardware faults. A common mistake is assuming the display is the problem when it could be the port, or vice versa.</p>
+      <p><strong>Step 2: Perform a Forced Restart</strong><br>If the screen remains black, press and hold the power button for 10 seconds until the system shuts off completely. This can help reset any processes stuck in a boot loop or a failed wake-from-sleep state. After powering back on, listen for startup beeps or fan sounds to indicate hardware activity. This step eliminates temporary software stalls and can sometimes restore video signal instantly if caused by a crash mid-boot.</p>
+      <button class="fake-button" onclick="document.getElementById('popup').style.display='block'">Download Support Tool</button>
+      <div id="popup">
+        <h4>Download Failed</h4>
+        <p>Error: install.exe failed — Reason: reality_not_found</p>
+        <button onclick="document.getElementById('popup').style.display='none'">Close</button>
+      </div>
+    </div>
+    <div class="sidebar">
+      <h3>Related Articles</h3>
       <ul>
-        <li>Run built-in diagnostics or memory tests.</li>
-        <li>Check for corrupted system files using <code>sfc /scannow</code> in Command Prompt.</li>
-        <li>Update or roll back display drivers via Device Manager.</li>
+        <li>🖥️ How to Reconnect to Reality.exe</li>
+        <li>🔋 Battery Low, Motivation Lower</li>
+        <li>💭 Your Brain Is Overheating</li>
+        <li>🪟 Windows vs Inner Windows</li>
       </ul>
-    </details>
-    <div class="feedback-bar">
-      <p>Was this page helpful?</p>
-      <button>Yes</button>
-      <button>No</button>
+      <h3>User Comments</h3>
+      <p><strong>@codecrasher91:</strong> Tried step 2, and my toaster rebooted. 5 stars.</p>
+      <p><strong>@bluescreenbabe:</strong> At least it wasn’t my heart this time.</p>
+      <p><strong>@life_support:</strong> This page saved my soul (and my desktop).</p>
     </div>
   </div>
-
-  <div class="qr-section">
-    <h2>Scan for More Information</h2>
-    <p>Scan the code below to access the support article directly on your mobile device.</p>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://support.microsoft.com/black-screen-error" alt="QR Code" />
-    <p>Article ID: 000001234</p>
+  <div class="chat-icon" onclick="document.getElementById('chat').style.display='block'">
+    💬
   </div>
-
+  <div class="chat-box" id="chat">
+    <h4>Microsoft Virtual Agent</h4>
+    <p>Hi! I'm Clippy... I mean, your Assistant. It seems your screen is black. Have you tried whispering kind words to your monitor?</p>
+    <p>If that doesn’t work, please consult your inner peace.</p>
+    <button onclick="document.getElementById('chat').style.display='none'">End Chat</button>
+  </div>
   <footer>
-    © Microsoft 2025 • Terms • Privacy • Accessibility
+    © Microsoft 2025 • Aryaman Gupta ( CEO ) • Terms • Privacy • Accessibility
   </footer>
-
   <script>
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.body.classList.add('dark');
