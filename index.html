@@ -3,110 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Black screen error - Microsoft Support</title>
+  <title>Resolving Black Screen Errors – Microsoft Support</title>
   <link rel="icon" href="https://www.microsoft.com/favicon.ico" />
-  <meta name="description" content="Support for Windows black screen errors. Learn how to troubleshoot system crashes and boot issues on Windows 10 and 11." />
+  <meta name="description" content="Learn how to troubleshoot Windows black screen errors on Windows 10 or 11." />
   <meta name="author" content="Microsoft Support Team" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    :root {
-      --blue: #0078d4;
-      --light: #ffffff;
-      --dark: #1b1b1b;
-      --gray: #f9f9f9;
-      --font: 'Segoe UI', sans-serif;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    html, body {
-      font-family: var(--font);
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    body.dark {
-      background-color: #1e1e1e;
-      color: #f1f1f1;
-    }
-
-    .top-bar {
-      background: #f2f2f2;
-      padding: 8px 16px;
-      font-size: 14px;
-      color: #333;
-      text-align: center;
-    }
-
-    nav {
-      background: #f2f2f2;
-      padding: 10px 20px;
-      font-size: 12px;
-      color: #555;
-    }
-
-    .lang-bar {
-      text-align: right;
-      padding: 6px 16px;
-      font-size: 12px;
-      color: gray;
-    }
-
-    .header {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 20px;
-      gap: 8px;
-    }
-
-    .logo svg {
-      height: 24px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-    }
+    :root {--blue:#0078d4;--light:#ffffff;--dark:#1e1e1e;--gray:#f2f2f2;--font:'Segoe UI',sans-serif;}
+    *, *::before, *::after {box-sizing: border-box;}
+    body {margin:0;font-family:var(--font);background:var(--light);color:#000;}
+    body.dark {background:var(--dark);color:#f1f1f1;}
+    .top-nav, .header, .ms-banner, .help-section, .footer-links {background:var(--light);}
+    .top-nav, .header nav a {display:inline-block; padding:12px 16px; text-decoration:none; color:#333; font-size:14px;}
+    .top-nav {border-bottom:1px solid #ddd; padding:8px 24px;}
+    .header {display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid #ddd;}
+    .header nav a {color:#333; font-weight:500;}
+    .header .logo svg {height:28px; vertical-align:middle; margin-right:8px;}
+    .content-container {max-width:1200px; margin:0 auto; display:flex; gap:24px; padding:24px;}
+    main {flex:3;}
+    aside.sidebar {flex:1; background:var(--gray); padding:16px; border:1px solid #ddd;}
+    main img {max-width:100%; border:1px solid #ccc; margin:16px 0;}
+    .troubleshoot p {margin-bottom:24px;}
+    .fake-download {margin:16px 0; padding:12px 20px; background:var(--blue);color:white;border:none;border-radius:4px;cursor:pointer;}
+    .modal {display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; color:#000; padding:24px; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); z-index:999;}
+    .chat-popup {position:fixed; bottom:24px; right:24px; width:300px; background:white; border:1px solid #ccc; border-radius:10px; padding:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2); cursor:move; z-index:1000;}
+    footer {background:var(--light); padding:24px; border-top:1px solid #ddd; font-size:12px;}
+    .footer-links {display:flex; justify-content:center; gap:40px; padding-bottom:24px;}
+    .footer-links div {line-height:1.6;}
+    .footer-links a {display:block;color:#333;text-decoration:none;margin:4px 0;font-size:14px;}
+    @media(max-width:1000px){.content-container{flex-direction:column;} .chat-popup {position:static; margin:20px auto;}}
   </style>
 </head>
 <body>
-  <div class="top-bar">Microsoft Support</div>
-  <nav>Home › Support › Windows › Error › Black Screen</nav>
-  <div class="lang-bar">🌐 English (United States) ▼</div>
 
-  <div class="header">
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <span>Support</span>
+    <span style="margin:0 16px;">|</span>
+    <a href="#">Microsoft 365</a>
+    <a href="#">Office</a>
+    <a href="#">Products</a>
+    <a href="#">Devices</a>
+    <a href="#">Account & billing</a>
+    <a href="#">Resources</a>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
     <div class="logo">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
         <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
         <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
         <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
       </svg>
-      Microsoft
+      Microsoft Support
     </div>
-    <button onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
+    <nav>
+      <a href="#">All Microsoft</a>
+      <a href="#">Search</a>
+      <a href="#">Sign in <i class="fas fa-user-circle"></i></a>
+    </nav>
+    <button onclick="document.body.classList.toggle('dark')" style="padding:8px 12px; background:none; border:1px solid #0078d4; color:#0078d4; border-radius:4px; cursor:pointer;">Toggle Dark Mode</button>
+  </header>
+
+  <!-- Microsoft 365 Banner -->
+  <div class="ms-banner" style="padding:20px 24px; background:#e7f3ff; border-bottom:1px solid #ddd;">
+    <strong>You’re invited to try Microsoft 365 for free</strong>
+    <button style="margin-left:24px;padding:8px 16px; background:#0078d4; color:white; border:none; border-radius:4px; cursor:pointer;">Unlock now</button>
   </div>
 
-  <main class="main-container" style="display: flex; flex-wrap: wrap; max-width: 1200px; margin: 20px auto; padding: 16px;">
-    <section class="content" style="flex: 2; min-width: 300px; padding: 16px;">
-      <h1>Black Screen Error: Life.exe has stopped responding</h1>
-      <img src="photo_6296053689932171106_y.jpg" alt="BSOD" style="max-width: 100%; border: 2px solid #ccc; border-radius: 6px; margin: 20px 0;" />
+  <!-- Main Content -->
+  <div class="content-container">
+    <main>
+      <h1 style="font-size:32px; margin-bottom:16px;">Resolving Black Screen errors in Windows</h1>
+      <p><em>Applies to Windows 10, Windows 11</em></p>
+      <img src="photo_6296053689932171106_y.jpg" alt="BSOD screenshot">
 
       <div class="troubleshoot">
         <p><strong>🧠 Safe Mode? Or Safe Emotions?</strong><br>
@@ -122,21 +94,15 @@
         Too many tabs open? Emotional memory full? When both Chrome and your soul use 100% memory, your screen might go black in protest. Try closing programs you’ve had running for too long — especially background stressors. Sometimes even Task Manager can't help; only sleep can.</p>
       </div>
 
-      <button class="fake-download" onclick="document.getElementById('modal').style.display='block'" style="background: var(--blue); color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 6px; cursor: pointer;">Download Microsoft Support Tool</button>
-      <div class="modal" id="modal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:white; color:black; padding:20px; border-radius:8px; z-index:9999; box-shadow: 0 0 10px rgba(0,0,0,0.5); max-width: 90%;">
+      <button class="fake-download">Download Microsoft Support Tool</button>
+      <div class="modal" id="modal">
         <p><strong>Error:</strong> Unable to install Support Tool because life.exe is still running unresolved processes.</p>
-        <button onclick="document.getElementById('modal').style.display='none'" style="margin-top: 10px;">Close</button>
+        <button onclick="document.getElementById('modal').style.display='none'">Close</button>
       </div>
+    </main>
 
-      <div style="margin-top: 40px; background: #fafafa; padding: 20px; border-top: 1px solid #ccc;">
-        <p><strong>Was this page helpful?</strong></p>
-        <button style="padding: 6px 12px; margin-right: 10px;">Yes</button>
-        <button style="padding: 6px 12px;">No</button><br><br>
-        <textarea rows="3" style="width: 100%; max-width: 500px; margin-top: 10px; padding: 10px;" placeholder="Tell us more..."></textarea>
-      </div>
-    </section>
-
-    <aside class="sidebar" style="flex: 1; min-width: 250px; padding: 20px; background: var(--gray); border-left: 1px solid #ddd;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
       <h3>Related Articles</h3>
       <ul>
         <li><a href="#">How to reboot your life safely</a></li>
@@ -149,64 +115,89 @@
       <p><strong>@Intern420:</strong> Finally fixed it... by crying.</p>
       <p><strong>@RetiredAdmin:</strong> I blame JavaScript. Always have.</p>
     </aside>
-  </main>
+  </div>
 
-  <!-- Clippy Chat Bot -->
-  <div id="clippy" style="position:fixed; bottom:20px; right:20px; width:280px; background:white; border:1px solid #ccc; border-radius:10px; padding:15px; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:10000; cursor:move;">
+  <!-- Clippy Chatbot -->
+  <div id="clippy" class="chat-popup">
     <h4>Need help?</h4>
     <p>Hi! I'm Clippy 2.0 🤖 — your support assistant. Let me redirect you... somewhere confusing!</p>
     <p><em>“Searching your emotions... 97% complete.”</em></p>
   </div>
-  <footer class="footer" style="text-align:center; font-size:12px; padding:20px; background:#f0f0f0; color:#666;">
-    © Microsoft 2025 • Aryaman Gupta ( CEO ) • Terms • Privacy • Support • Feedback
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <div>
+        <strong>What's new</strong>
+        <a href="#">Surface Pro</a>
+        <a href="#">Surface Laptop</a>
+        <a href="#">Microsoft Copilot</a>
+      </div>
+      <div>
+        <strong>Microsoft Store</strong>
+        <a href="#">Account profile</a>
+        <a href="#">Download center</a>
+        <a href="#">Store support</a>
+      </div>
+      <div>
+        <strong>Education</strong>
+        <a href="#">Microsoft in education</a>
+        <a href="#">Devices for education</a>
+        <a href="#">Microsoft Teams for Education</a>
+      </div>
+      <div>
+        <strong>Business</strong>
+        <a href="#">Microsoft Cloud</a>
+        <a href="#">Microsoft Security</a>
+      </div>
+      <div>
+        <strong>Developer & IT</strong>
+        <a href="#">Azure</a>
+        <a href="#">Microsoft Learn</a>
+      </div>
+      <div>
+        <strong>Company</strong>
+        <a href="#">Careers</a>
+        <a href="#">About Microsoft</a>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:16px; color:#666;">
+      © Microsoft 2025 • Aryaman Gupta ( CEO ) • Terms of use | Privacy & cookies | Trademarks | Contact us
+    </p>
   </footer>
 
-  <!-- Microsoft Insights tracking -->
+  <!-- Tracking + Scripts -->
   <script>
     console.log('Microsoft Analytics loaded...');
-
-    // Auto dark mode
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.body.classList.add('dark');
     }
-
-    // Make Clippy draggable
-    const clippy = document.getElementById("clippy");
-    let isDragging = false, offsetX, offsetY;
-
-    clippy.addEventListener("mousedown", dragStart);
-    clippy.addEventListener("touchstart", dragStart, { passive: false });
-
-    function dragStart(e) {
-      isDragging = true;
-      const clientX = e.clientX || e.touches[0].clientX;
-      const clientY = e.clientY || e.touches[0].clientY;
-      offsetX = clientX - clippy.offsetLeft;
-      offsetY = clientY - clippy.offsetTop;
-      document.addEventListener("mousemove", drag);
-      document.addEventListener("mouseup", stopDrag);
-      document.addEventListener("touchmove", drag, { passive: false });
-      document.addEventListener("touchend", stopDrag);
-    }
-
-    function drag(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      const clientX = e.clientX || e.touches[0].clientX;
-      const clientY = e.clientY || e.touches[0].clientY;
-      clippy.style.left = clientX - offsetX + "px";
-      clippy.style.top = clientY - offsetY + "px";
-      clippy.style.bottom = "auto";
-      clippy.style.right = "auto";
-    }
-
-    function stopDrag() {
-      isDragging = false;
-      document.removeEventListener("mousemove", drag);
-      document.removeEventListener("mouseup", stopDrag);
-      document.removeEventListener("touchmove", drag);
-      document.removeEventListener("touchend", stopDrag);
-    }
+    document.querySelector('.fake-download').onclick = () => document.getElementById('modal').style.display = 'block';
+    // Draggable Clippy
+    const clippy = document.getElementById('clippy');
+    let dragging = false, offsetX=0, offsetY=0;
+    clippy.addEventListener('mousedown', e => {
+      dragging = true;
+      offsetX = e.clientX - clippy.offsetLeft;
+      offsetY = e.clientY - clippy.offsetTop;
+    });
+    document.addEventListener('mousemove', e => {
+      if (dragging) { clippy.style.left = e.clientX - offsetX + 'px'; clippy.style.top = e.clientY - offsetY + 'px'; }
+    });
+    document.addEventListener('mouseup', () => dragging = false);
+    clippy.addEventListener('touchstart', e => {
+      dragging = true;
+      offsetX = e.touches[0].clientX - clippy.offsetLeft;
+      offsetY = e.touches[0].clientY - clippy.offsetTop;
+    }, {passive:false});
+    document.addEventListener('touchmove', e => {
+      if (dragging) {
+        clippy.style.left = e.touches[0].clientX - offsetX + 'px';
+        clippy.style.top = e.touches[0].clientY - offsetY + 'px';
+      }
+    }, {passive:false});
+    document.addEventListener('touchend', () => dragging = false);
   </script>
+
 </body>
 </html>
