@@ -1,189 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Microsoft Support – Fed Up Error</title>
-  <link rel="icon" href="https://www.microsoft.com/favicon.ico"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft Support - Fed Up Error</title>
+  <link rel="icon" href="https://www.microsoft.com/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    /* Base */
     :root {
-      --blue:#0078d4;--light:#fff;--dark:#1e1e1e;--gray:#f2f2f2;
-      --font:'Segoe UI','Helvetica Neue',sans-serif;
+      --blue: #0078d4;
+      --light: #ffffff;
+      --dark: #1e1e1e;
+      --gray: #f2f2f2;
+      --font: 'Segoe UI', sans-serif;
     }
-    *,*::before,*::after{box-sizing:border-box;}
-    html,body{margin:0;padding:0;font-family:var(--font);background:var(--light);color:#000;transition:.3s;font-size:clamp(14px,2vw,18px);}
-    body.dark{background:var(--dark);color:#f1f1f1;}
-
-    /* Header & Top Nav */
-    .top-nav{display:flex;flex-wrap:wrap;align-items:center;padding:8px 20px;background:var(--light);border-bottom:1px solid #ddd;}
-    .top-nav a{margin:4px 8px;color:#333;text-decoration:none;}
-    .header{display:flex;align-items:center;padding:12px 20px;background:var(--light);border-bottom:1px solid #ddd;position:sticky;top:0;z-index:1000;flex-wrap:wrap;}
-    .logo{display:flex;align-items:center;}
-    .logo svg{height:28px;margin-right:8px;}
-    .logo strong{font-weight:600;}
-    .nav-links{display:flex;gap:12px;}
-    .nav-links a{color:#333;text-decoration:none;position:relative;}
-    .nav-links a:hover::after{content:'';position:absolute;left:0;bottom:-3px;width:100%;height:2px;background:var(--blue);}
-    .header-icons{display:flex;align-items:center;gap:16px;font-size:18px;margin-left:auto;}
-    .header-icons i{cursor:pointer;color:#333;}
-    .toggle-btn{background:none;border:1px solid var(--blue);color:var(--blue);padding:6px 12px;border-radius:4px;cursor:pointer;margin-left:16px;}
-    .hamburger{display:none;font-size:24px;background:none;border:none;color:#333;cursor:pointer;margin-left:auto;}
-
-    /* Banner */
-    .ms-banner{padding:20px;background:#e7f3ff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
-    .ms-banner button{padding:8px 16px;background:var(--blue);color:#fff;border:none;border-radius:4px;}
-
-    /* Content + Sidebar */
-    .content-wrap{display:flex;gap:20px;max-width:1200px;margin:20px auto;padding:0 20px;}
-    main{flex:3;min-width:280px;}
-    aside.sidebar{flex:1;min-width:240px;background:var(--gray);padding:16px;}
-    img{max-width:100%;border:1px solid #ccc;border-radius:4px;margin:16px 0;}
-
-    /* Clippy */
-    .chat-btn{position:fixed;bottom:16px;right:16px;width:60px;height:60px;background:var(--blue);color:#fff;font-size:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.2);z-index:1000;}
-    .chat-panel{display:none;position:fixed;bottom:88px;right:16px;width:280px;background:#fff;padding:12px;border:1px solid #ccc;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:999;font-size:14px;}
-    body.dark .chat-panel{background:#2c2c2c;color:#f1f1f1;border-color:#555;}
-
-    /* Cookie Banner */
-    .cookie-banner{position:fixed;bottom:0;left:0;width:100%;background:#0078d4;color:#fff;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;z-index:10000;font-size:14px;}
-    .cookie-banner button{background:#fff;color:var(--blue);border:none;padding:6px 12px;border-radius:4px;cursor:pointer;}
-
-    /* Footer */
-    footer{background:var(--light);}
-    .footer-cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:20px;padding:20px;}
-    .footer-cols strong{display:block;margin-bottom:8px;font-size:15px;}
-    .footer-cols a{display:block;color:#333;text-decoration:none;margin:4px 0;font-size:14px;}
-    .footer-bottom{text-align:center;padding:12px;font-size:12px;color:#666;}
-
-    /* Mobile */
-    @media(max-width:768px){
-      .nav-links{display:none;flex-direction:column;gap:8px;width:100%;}
-      .hamburger{display:block;}
-      .header-icons{order:-1;width:100%;justify-content:flex-end;margin:10px 0;}
-      .content-wrap{flex-direction:column;}
-      aside.sidebar{min-width:100%;padding:12px;}
-      .chat-btn{width:50px;height:50px;font-size:22px;bottom:12px;right:12px;}
-      .cookie-banner{flex-direction:column;text-align:center;gap:8px;}
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: var(--font);
+      background: var(--light);
+      color: #000;
+      transition: background 0.3s, color 0.3s;
     }
-
-    /* Dark Mode Styles */
+    body.dark {
+      background: var(--dark);
+      color: #fff;
+    }
+    .top-nav, .footer-links { background: var(--light); padding: 12px 16px; border-bottom: 1px solid #ddd; }
+    .top-nav a, .footer-links a { text-decoration: none; color: #333; font-size: 14px; }
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; border-bottom: 1px solid #ddd; background: var(--light);
+      flex-wrap: wrap;
+    }
+    .header .logo { display: flex; align-items: center; }
+    .header .logo svg { height: 28px; margin-right: 8px; }
+    .header nav a { margin: 0 8px; font-size: 14px; color: #333; text-decoration: none; }
+    .toggle-btn {
+      padding: 8px 12px; background: none; border: 1px solid var(--blue);
+      color: var(--blue); border-radius: 4px; cursor: pointer;
+    }
+    .ms-banner {
+      background: #e7f3ff; padding: 20px; display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap;
+    }
+    .content-container {
+      display: flex; flex-wrap: wrap; padding: 20px;
+      max-width: 1200px; margin: auto;
+    }
+    main {
+      flex: 3; min-width: 300px;
+    }
+    aside.sidebar {
+      flex: 1; min-width: 250px;
+      background: var(--gray); padding: 16px;
+    }
+    img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+    .chat-popup {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      width: 60px;
+      height: 60px;
+      background: #0078d4;
+      color: white;
+      font-size: 28px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 999;
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;
+    }
+    .footer-links div { min-width: 140px; }
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      .header, .ms-banner { flex-direction: column; align-items: flex-start; }
+      .content-container { flex-direction: column; }
+      .chat-popup {
+        bottom: 16px; right: 16px;
+        width: 50px; height: 50px; font-size: 22px;
+      }
+    }
     body.dark .top-nav,
     body.dark .header,
     body.dark .ms-banner,
-    body.dark footer,
-    body.dark .footer-cols { background:var(--dark); }
-    body.dark a,
-    body.dark .header-icons i,
-    body.dark .nav-links a { color:#f1f1f1 !important; }
-    body.dark .footer-cols a { color:#ccc; }
+    body.dark .footer-links {
+      background: #1e1e1e;
+    }
+    body.dark .top-nav a,
+    body.dark .footer-links a,
+    body.dark .header nav a {
+      color: #f0f0f0;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <div class="top-nav">
-    <a href="#">Support</a><a href="#">Products</a><a href="#">Devices</a><a href="#">Account</a>
-  </div>
+<div class="top-nav">
+  <a href="#">Support</a> | <a href="#">Products</a> | <a href="#">Devices</a> | <a href="#">Account</a>
+</div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
-        <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
-        <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
-        <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
-      </svg>
-      <strong>Microsoft Support</strong>
+<div class="header">
+  <div class="logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
+      <rect x="13" y="1" width="10" height="10" fill="#7fba00"/>
+      <rect x="1" y="13" width="10" height="10" fill="#00a4ef"/>
+      <rect x="13" y="13" width="10" height="10" fill="#ffb900"/>
+    </svg>
+    <strong>Microsoft Support</strong>
+  </div>
+  <nav>
+    <a href="#">All Microsoft</a>
+    <a href="#">Help</a>
+    <a href="#">Sign In</a>
+  </nav>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌓</button>
+</div>
+
+<div class="ms-banner">
+  <strong>Try Microsoft 365 for free</strong>
+  <button style="padding: 8px 12px; background: var(--blue); color: white; border: none; border-radius: 4px;">Start Free Trial</button>
+</div>
+
+<div class="content-container">
+  <main>
+    <h1>Resolving Black Screen Errors in Windows</h1>
+    <p>This humorous parody guide walks you through fixing black screen issues when your PC – or you – have simply had enough of life's processes running wild.</p>
+    <img src="photo_6296053689932171106_y.jpg" alt="BSOD image" />
+
+    <div class="troubleshoot">
+      <p><strong>🧠 Safe Mode (a.k.a. Emotional Time-Out Mode)</strong><br>
+      When everything in your relationship crashes and goes dark, maybe it's time to reboot into <strong>Emotional Safe Mode</strong>. This isn’t about ignoring your partner — it’s about turning off all third-party noise. In Safe Mode, only the essential emotional drivers load: trust, empathy, and maybe coffee. No exes, no drama group chats, no "What if they liked that photo?"—just raw, uninterrupted conversation. Try sitting down without distractions and talking like two humans who once laughed over spilled pasta. If you function better in this stripped-down mode, your problem wasn’t the relationship — it was external interference. A clean reboot might not fix everything, but it can give clarity. And hey, even your PC needs a break to start fresh — so why shouldn’t your heart?</p>
+
+      <p><strong>💽 Driver Conflicts (a.k.a. Trust Issues & Compatibility Errors)</strong><br>
+      Your PC isn’t the only thing suffering from <strong>driver conflicts</strong> — relationships crash too when key emotional drivers aren’t compatible or are outdated. Maybe you've been using an old version of Trust 1.2 or trying to patch over Jealousy.exe with quick fixes. Update your emotional firmware: install Communication 4.0, run Compatibility Mode, and remove third-party viruses like insecurity and pride. Often, arguments stem from drivers that never synced in the first place. You’re both trying to run on different emotional operating systems. The fix? Sit together, audit the emotional hardware, and perform a system update — not just on your device, but on your understanding of each other.</p>
+
+      <p><strong>📦 System Restore (Back to When You Both Laughed)</strong><br>
+      Sometimes, life throws a system-wide error and suddenly you're both frozen — staring blankly at each other like a PC stuck on a black screen. That's when you need <strong>System Restore</strong>, not just on your device, but on your relationship. Go back to a time when things worked: when texts felt exciting, when movie nights didn’t end in passive-aggressive popcorn throwing, and when "we need to talk" wasn’t always followed by buffering silence. Think of emotional restore points — moments like your first walk, your inside jokes, or that late-night biryani at 1 AM. Revisit, reconnect, and reboot. Sometimes progress is made by going back.</p>
+
+      <p><strong>⚠️ Out of RAM (Really Angry Moments)</strong><br>
+      Your brain has tabs open from three arguments ago, unread emotional messages, and background apps like “Overthinking,” “Work Stress,” and “That Thing They Said in 2022.” Guess what? You're officially <strong>Out of RAM</strong> — <em>Really Angry Moments</em>. At this point, even your internal processor is overheating, and the relationship monitor goes black. You’re not broken — just overloaded. What you both need is a forced shutdown of pride, a cooling system called “Take a Walk,” and maybe a firmware upgrade titled “Let’s Talk Calmly 3.0.” Clear your emotional cache. You’ll be amazed at how much faster things run when you close the 27 tabs in your mind.</p>
     </div>
+  </main>
 
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <nav class="nav-links">
-      <a href="#">All Microsoft</a><a href="#">Help</a><a href="#">Sign In</a>
-    </nav>
+  <aside class="sidebar">
+    <h3>Related Topics</h3>
+    <ul>
+      <li><a href="#">How to Restart Yourself</a></li>
+      <li><a href="#">CTRL+ALT+Delete Emotions</a></li>
+      <li><a href="#">Recover from Existential Reboots</a></li>
+    </ul>
+  </aside>
+</div>
 
-    <div class="header-icons">
-      <i class="fas fa-search" title="Search"></i>
-      <i class="fas fa-globe" title="Language"></i>
-      <i class="fas fa-user-circle" title="Account"></i>
-      <button class="toggle-btn" onclick="toggleDark()">🌓</button>
-    </div>
-  </header>
+<div class="chat-popup" title="Chat with Clippy 2.0 🤖">💬</div>
 
-  <!-- Banner -->
-  <div class="ms-banner">
-    <strong>Try Microsoft 365 for free</strong>
-    <button>Start Free Trial</button>
+<footer>
+  <div class="footer-links">
+    <div><strong>Products</strong><a href="#">Surface</a><a href="#">Xbox</a></div>
+    <div><strong>Support</strong><a href="#">Help</a><a href="#">Community</a></div>
+    <div><strong>Company</strong><a href="#">About</a><a href="#">Careers</a></div>
+    <div><strong>Legal</strong><a href="#">Privacy</a><a href="#">Terms</a></div>
   </div>
+  <div class="footer-bottom">© Microsoft 2025 • Aryaman Gupta ( CEO ) • Parody Project</div>
+</footer>
 
-  <!-- Main + Sidebar -->
-  <div class="content-wrap">
-    <main>
-  <h1>Resolving Black Screen Errors in Windows</h1>
-  <p>This developer's guide walks you through fixing black screen issues when your PC – or you – have simply had enough of life's processes running wild.</p>
-  <img src="photo_6296053689932171106_y.jpg" alt="BSOD image" />
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+  }
+  document.querySelector('.chat-popup').addEventListener('click', function () {
+    alert("Hi! I’m Clippy 2.0 🤖 – Currently overthinking your request...");
+  });
+</script>
 
-  <div class="troubleshoot">
-    <p><strong>🧠 Safe Mode (a.k.a. Emotional Time-Out Mode)</strong><br>
-    When everything in your relationship crashes and goes black, consider rebooting into Safe Mode — not just your PC, but emotionally. Cut off external noise (a.k.a. friends with bad advice and unnecessary social media stalking) and load only your core feelings. If communication works in Safe Mode, chances are the problem lies with third-party interference — maybe even your ex who keeps popping up like a malware notification.</p>
-
-    <p><strong>💽 Driver Conflicts (a.k.a. Trust Issues)</strong><br>
-    Just like outdated drivers cause your screen to black out, unresolved trust issues and unspoken expectations can crash your emotional OS. Update your communication drivers regularly, uninstall passive-aggressive comments, and avoid running "assumptions.exe" without validation. If the conflict started after installing jealousy update 2.0, consider rolling back to the version of you that still believed in hugs and honest conversations.</p>
-
-    <p><strong>📦 System Restore (Back to When You Both Laughed)</strong><br>
-    Feeling like everything’s broken and unresponsive? Use the Relationship Restore Tool (a.k.a. heartfelt talk) to rewind to that version of your love life when "quality time" wasn’t just Netflix buffering. Hit Run (Win+R), type "rstrui" (or maybe "Sorry, I messed up"), and choose a restore point — maybe the beach trip before the birthday fight or the time you both cried laughing over burnt toast.</p>
-
-    <p><strong>⚠️ Out of RAM (Really Angry Moments)</strong><br>
-    Too many apps open in your brain? Emotional memory maxed out? When both your mind and your partner are running at 100% frustration, a crash is inevitable. Close the tabs: work stress, old grudges, unresolved "we’ll talk later" conversations. Try Ctrl+Alt+Del-eting blame, and give your emotional processor a break. Sometimes, the only solution is powering down, hugging it out, and rebooting softly.</p>
-  </div>
-</main>
-
-
-    <aside class="sidebar">
-      <h3>Related Topics</h3>
-      <ul>
-        <li><a href="#">How to Restart Yourself</a></li>
-        <li><a href="#">CTRL+ALT+Delete Emotions</a></li>
-        <li><a href="#">Recover from Existential Reboots</a></li>
-      </ul>
-    </aside>
-  </div>
-
-  <!-- Clippy Button + Chat Panel -->
-  <div class="chat-btn" title="Chat with Clippy 2.0 🤖">💬</div>
-  <div class="chat-panel" id="chatPanel">
-    <p><strong>Clippy 2.0 🤖:</strong> Hello, I'm overthinking your issue! What’s wrong now?</p>
-    <p><em>“Parsing your emotions... 85% complete.”</em></p>
-  </div>
-
-  <!-- Cookie Banner -->
-  <div class="cookie-banner" id="cookieBanner">
-    This site uses cookies to enhance your experience.
-    <button onclick="document.getElementById('cookieBanner').style.display='none'">Got it!</button>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-cols">
-      <div><strong>Products</strong><a href="#">Surface</a><a href="#">Xbox</a><a href="#">Windows</a></div>
-      <div><strong>Support</strong><a href="#">Help Center</a><a href="#">Community</a><a href="#">Virtual Agent</a></div>
-      <div><strong>Company</strong><a href="#">About</a><a href="#">Careers</a><a href="#">News</a></div>
-      <div><strong>Legal</strong><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
-      <div><strong>Developers</strong><a href="#">Azure Docs</a><a href="#">GitHub</a><a href="#">Visual Studio</a></div>
-      <div><strong>Education</strong><a href="#">Students</a><a href="#">Teachers</a><a href="#">Learning Tools</a></div>
-    </div>
-    <div class="footer-bottom">© Microsoft 2025 • Aryaman Gupta ( CEO ) • Parody Project</div>
-  </footer>
-
-  <script>
-    function toggleDark(){ document.body.classList.toggle('dark'); }
-    function toggleMenu(){ document.querySelector('.nav-links').classList.toggle('active'); }
-    document.querySelector('.chat-btn').addEventListener('click', function(){
-      const panel = document.getElementById('chatPanel');
-      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-    });
-  </script>
 </body>
 </html>
