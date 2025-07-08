@@ -106,6 +106,60 @@
     body.dark .header nav a {
       color: #f0f0f0;
     }
+    footer {
+  background: #f3f3f3; /* lighter gray for real MS look */
+  border-top: 1px solid #ccc;
+  padding: 32px 16px 16px 16px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-container div {
+  flex: 1 1 180px;
+  margin: 12px;
+  min-width: 160px;
+}
+
+.footer-container strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.footer-container a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 16px;
+  }
+
+  .footer-container div {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+}
   </style>
 </head>
 <body>
@@ -171,13 +225,75 @@
 <div class="chat-popup" title="Chat with Clippy 2.0 🤖">💬</div>
 
 <footer>
-  <div class="footer-links">
-    <div><strong>Products</strong><a href="#">Surface</a><a href="#">Xbox</a></div>
-    <div><strong>Support</strong><a href="#">Help</a><a href="#">Community</a></div>
-    <div><strong>Company</strong><a href="#">About</a><a href="#">Careers</a></div>
-    <div><strong>Legal</strong><a href="#">Privacy</a><a href="#">Terms</a></div>
+  <div class="footer-container">
+    <div>
+      <strong>What's new</strong>
+      <a href="#">Surface Pro</a>
+      <a href="#">Surface Laptop</a>
+      <a href="#">Surface Laptop Studio 2</a>
+      <a href="#">Surface Laptop Go 3</a>
+      <a href="#">Microsoft Copilot</a>
+      <a href="#">AI in Windows</a>
+      <a href="#">Explore Microsoft products</a>
+      <a href="#">Windows 11 apps</a>
+    </div>
+    <div>
+      <strong>Microsoft Store</strong>
+      <a href="#">Account profile</a>
+      <a href="#">Download Center</a>
+      <a href="#">Microsoft Store support</a>
+      <a href="#">Returns</a>
+      <a href="#">Order tracking</a>
+      <a href="#">Certified Refurbished</a>
+      <a href="#">Microsoft Store Promise</a>
+      <a href="#">Flexible Payments</a>
+    </div>
+    <div>
+      <strong>Education</strong>
+      <a href="#">Microsoft in education</a>
+      <a href="#">Devices for education</a>
+      <a href="#">Microsoft Teams for Education</a>
+      <a href="#">Microsoft 365 Education</a>
+      <a href="#">How to buy for your school</a>
+      <a href="#">Educator training and development</a>
+      <a href="#">Deals for students and parents</a>
+      <a href="#">AI for education</a>
+    </div>
+    <div>
+      <strong>Business</strong>
+      <a href="#">Microsoft Cloud</a>
+      <a href="#">Microsoft Security</a>
+      <a href="#">Dynamics 365</a>
+      <a href="#">Microsoft 365</a>
+      <a href="#">Microsoft Power Platform</a>
+      <a href="#">Microsoft Teams</a>
+      <a href="#">Microsoft 365 Copilot</a>
+      <a href="#">Small Business</a>
+    </div>
+    <div>
+      <strong>Developer & IT</strong>
+      <a href="#">Azure</a>
+      <a href="#">Microsoft Developer</a>
+      <a href="#">Microsoft Learn</a>
+      <a href="#">Support for AI marketplace apps</a>
+      <a href="#">Microsoft Tech Community</a>
+      <a href="#">Azure Marketplace</a>
+      <a href="#">AppSource</a>
+      <a href="#">Visual Studio</a>
+    </div>
+    <div>
+      <strong>Company</strong>
+      <a href="#">Careers</a>
+      <a href="#">About Microsoft</a>
+      <a href="#">Company news</a>
+      <a href="#">Privacy at Microsoft</a>
+      <a href="#">Investors</a>
+      <a href="#">Diversity and inclusion</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Sustainability</a>
+    </div>
   </div>
-  <div class="footer-bottom">© Microsoft 2025 • Aryaman Gupta ( CEO ) • Parody Project</div>
+  <p class="footer-bottom">© Microsoft 2025 • Aryaman Gupta ( CEO ) • Parody Project</p>
 </footer>
 
 <script>
