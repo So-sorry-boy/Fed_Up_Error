@@ -77,166 +77,112 @@
       cursor: pointer;
       z-index: 999;
     }
-    .footer-links {
-      display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;
+
+    h2, h3 { margin-top: 32px; }
+
+    /* Discover Section */
+    .discover-section {
+      background-color: #f3f3f3;
+      padding: 48px 24px;
+      border-top: 1px solid #ccc;
+      font-family: var(--font);
     }
-    .footer-links div { min-width: 140px; }
+    .discover-section h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .discover-section p {
+      text-align: center;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 32px;
+    }
+    .discover-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .discover-item {
+      background: #fff;
+      width: 240px;
+      padding: 24px 16px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .discover-item i {
+      font-size: 28px;
+      color: #0078d4;
+      margin-bottom: 10px;
+    }
+    .discover-item a {
+      display: block;
+      font-size: 15px;
+      color: #0078d4;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: #ebebeb;
+      padding: 40px 20px;
+      border-top: 1px solid #ccc;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-container div {
+      flex: 1 1 180px;
+      margin: 12px;
+      min-width: 160px;
+    }
+    .footer-container strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #000;
+    }
+    .footer-container a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
     .footer-bottom {
       text-align: center;
       font-size: 12px;
       color: #666;
-      margin: 20px 0;
+      margin-top: 24px;
     }
+
     @media (max-width: 768px) {
-      .header, .ms-banner { flex-direction: column; align-items: flex-start; }
-      .content-container { flex-direction: column; }
+      .header, .ms-banner, .content-container, .footer-container, .discover-grid {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .chat-popup {
-        bottom: 16px; right: 16px;
-        width: 50px; height: 50px; font-size: 22px;
+        width: 50px; height: 50px;
+        font-size: 22px;
+      }
+      .discover-item {
+        width: 100%;
       }
     }
-    body.dark .top-nav,
-    body.dark .header,
-    body.dark .ms-banner,
-    body.dark .footer-links {
+
+    body.dark .top-nav, body.dark .header, body.dark .ms-banner, body.dark .footer-links, body.dark footer {
       background: #1e1e1e;
     }
-    body.dark .top-nav a,
-    body.dark .footer-links a,
-    body.dark .header nav a {
+    body.dark .top-nav a, body.dark .footer-links a, body.dark .header nav a, body.dark footer a {
       color: #f0f0f0;
     }
-    footer {
-  background: #f3f3f3;
-  border-top: 1px solid #ccc;
-  padding: 32px 16px 16px 16px;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.footer-container div {
-  flex: 1 1 180px;
-  margin: 12px;
-  min-width: 160px;
-}
-
-.footer-container strong {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: #000;
-}
-
-.footer-container a {
-  display: block;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-.footer-bottom {
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-  margin-top: 24px;
-}
-
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 16px;
-  }
-
-  .footer-container div {
-    width: 100%;
-    margin-bottom: 24px;
-  }
-/* Want More Options Section Styling */
-.discover-section {
-  background-color: #f3f3f3;
-  padding: 48px 24px;
-  font-family: 'Segoe UI', sans-serif;
-  border-top: 1px solid #ddd;
-}
-
-.discover-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.discover-section h2 {
-  font-size: 26px;
-  font-weight: 600;
-  color: #1b1b1b;
-  margin-bottom: 10px;
-}
-
-.discover-subtext {
-  font-size: 16px;
-  color: #444;
-  margin-bottom: 36px;
-  line-height: 1.5;
-}
-
-.discover-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px;
-}
-
-.discover-card {
-  background-color: #fff;
-  width: 240px;
-  padding: 24px 16px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
-}
-
-.discover-card:hover {
-  transform: translateY(-3px);
-}
-
-.discover-card i {
-  font-size: 30px;
-  color: #0078d4;
-  margin-bottom: 14px;
-  display: block;
-}
-
-.discover-card a {
-  font-size: 15px;
-  color: #0078d4;
-  text-decoration: none;
-  font-weight: 500;
-  display: block;
-}
-
-.discover-card a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .discover-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .discover-card {
-    width: 90%;
-  }
-}
   </style>
 </head>
 <body>
@@ -273,7 +219,9 @@
     <h1>Resolving Black Screen Errors in Windows</h1>
     <p>This humorous parody guide walks you through fixing black screen issues when your PC – or you – have simply had enough of life's processes running wild.</p>
     <img src="photo_6296053689932171106_y.jpg" alt="BSOD image" />
-
+      
+    <h2>Basic Troubleshooting (Relationship Context)</h2>
+    <!-- Your 4 paragraph relationship-based troubleshooting goes here -->
     <div class="troubleshoot">
       <p><strong>🧠 Safe Mode (a.k.a. Emotional Time-Out Mode)</strong><br>
       When everything in your relationship crashes and goes dark, maybe it's time to reboot into <strong>Emotional Safe Mode</strong>. This isn’t about ignoring your partner — it’s about turning off all third-party noise. In Safe Mode, only the essential emotional drivers load: trust, empathy, and maybe coffee. No exes, no drama group chats, no "What if they liked that photo?"—just raw, uninterrupted conversation. Try sitting down without distractions and talking like two humans who once laughed over spilled pasta. If you function better in this stripped-down mode, your problem wasn’t the relationship — it was external interference. A clean reboot might not fix everything, but it can give clarity. And hey, even your PC needs a break to start fresh — so why shouldn’t your heart?</p>
@@ -287,9 +235,10 @@
       <p><strong>⚠️ Out of RAM (Really Angry Moments)</strong><br>
       Your brain has tabs open from three arguments ago, unread emotional messages, and background apps like “Overthinking,” “Work Stress,” and “That Thing They Said in 2022.” Guess what? You're officially <strong>Out of RAM</strong> — <em>Really Angry Moments</em>. At this point, even your internal processor is overheating, and the relationship monitor goes black. You’re not broken — just overloaded. What you both need is a forced shutdown of pride, a cooling system called “Take a Walk,” and maybe a firmware upgrade titled “Let’s Talk Calmly 3.0.” Clear your emotional cache. You’ll be amazed at how much faster things run when you close the 27 tabs in your mind.</p>
     </div>
-    <h2 style="margin-top: 40px;">Advanced Troubleshooting Steps (Relationship Edition)</h2>
 
-<ol style="line-height: 1.8; padding-left: 20px; font-size: 16px;">
+    <h2>Advanced Troubleshooting (Relationship Context)</h2>
+    <!-- Your 4 point advanced list here -->
+    <ol style="line-height: 1.8; padding-left: 20px; font-size: 16px;">
   <li>
     <strong>🧹 Clean Boot (a.k.a. Let’s Start Fresh):</strong><br>
     Sometimes, there’s too much emotional startup — old fights, passive-aggressive background processes, or memory-hogging expectations. A clean boot means starting your relationship with only the essentials: respect, communication, and maybe Netflix. Remove unnecessary triggers by talking it out calmly. Hide all non-essential emotional services and disable drama from launching at boot.
@@ -323,33 +272,22 @@
 </div>
 
 <div class="chat-popup" title="Chat with Clippy 2.0 🤖">💬</div>
-<!-- Discover More Section -->
+
+<!-- Discover Section -->
 <section class="discover-section">
   <h2>Want more options?</h2>
   <p>Explore subscription benefits, browse training courses, learn how to secure your device, and more.</p>
-
   <div class="discover-grid">
-    <div class="discover-item">
-      <i class="fas fa-gem"></i>
-      <a href="#">Microsoft 365 subscription benefits</a>
-    </div>
-    <div class="discover-item">
-      <i class="fas fa-graduation-cap"></i>
-      <a href="#">Microsoft 365 training</a>
-    </div>
-    <div class="discover-item">
-      <i class="fas fa-shield-alt"></i>
-      <a href="#">Microsoft security</a>
-    </div>
-    <div class="discover-item">
-      <i class="fas fa-universal-access"></i>
-      <a href="#">Accessibility center</a>
-    </div>
+    <div class="discover-item"><i class="fas fa-gem"></i><a href="#">Microsoft 365 subscription benefits</a></div>
+    <div class="discover-item"><i class="fas fa-graduation-cap"></i><a href="#">Microsoft 365 training</a></div>
+    <div class="discover-item"><i class="fas fa-shield-alt"></i><a href="#">Microsoft security</a></div>
+    <div class="discover-item"><i class="fas fa-universal-access"></i><a href="#">Accessibility center</a></div>
   </div>
 </section>
 
 <footer>
   <div class="footer-container">
+    <!-- Your 6-column Microsoft-like footer content here -->
     <div>
       <strong>What's new</strong>
       <a href="#">Surface Pro</a>
